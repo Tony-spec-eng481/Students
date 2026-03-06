@@ -30,7 +30,7 @@ const Announcements = lazy(() => import('./pages/Dashboard/StudentDashboard/Anno
 const Certificates = lazy(() => import('./pages/Dashboard/StudentDashboard/Certificates'));
 const Settings = lazy(() => import('./pages/Dashboard/StudentDashboard/Settings'));
 const AvailableCourses = lazy(() => import('./pages/Dashboard/StudentDashboard/AvailableCourses'));
-const AgoraClass = lazy(() => import('./pages/LiveClass/AgoraClass'));
+const ZoomClass = lazy(() => import('./pages/LiveClass/ZoomClass'));
 const CourseList = lazy(() => import('./pages/Courses/CourseList'));
 const CourseDetails = lazy(() => import('./pages/Courses/CourseDetails'));
 
@@ -70,7 +70,7 @@ function App() {
               <Route path="settings" element={<Settings />} />
               <Route path="progress" element={<StudentOverview />} />
             </Route>
-            <Route path="/live-classes/room/:channelName" element={<AgoraClass />} />
+            <Route path="/live-classes/room/:channelName" element={<ZoomClass />} />
           </Route>
 
           <Route path="*" element={<Navigate to="/" replace />} />

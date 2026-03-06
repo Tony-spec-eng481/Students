@@ -39,8 +39,18 @@ const LiveClasses = () => {
   const liveCount = classes.filter((c) => c.status === "live").length;
   const scheduledCount = classes.filter((c) => c.status === "scheduled").length;
 
-  const openLiveClass = (url: string) => {
-    window.open(`/live-classes/room/${url}`, "_blank",
+  const getDuration = (lc: any) => {
+    const start = lc.startTime || lc.start_time;
+    const end = lc.endTime || lc.end_time;
+    if (!start || !end) return null;
+    const diff = new Date(end).getTime() - new Date(start).getTime();
+    return Math.round(diff / 60000);
+  };
+
+  const getStartTime = (lc: any) => lc.startTime || lc.start_time;
+
+  const openLiveClass = (classId: string) => {
+    window.open(`/live-classes/room/${classId}`, "_blank",
       "noopener,noreferrer");
   };
 
@@ -100,7 +110,7 @@ const LiveClasses = () => {
                   <div className="detail-item">
                     <FiCalendar />{" "}
                     <span>
-                      {new Date(lc.startTime).toLocaleDateString(undefined, {
+                      {new Date(getStartTime(lc)).toLocaleDateString(undefined, {
                         weekday: "long",
                         month: "short",
                         day: "numeric",
@@ -110,11 +120,11 @@ const LiveClasses = () => {
                   <div className="detail-item">
                     <FiClock />{" "}
                     <span>
-                      {new Date(lc.startTime).toLocaleTimeString([], {
+                      {new Date(getStartTime(lc)).toLocaleTimeString([], {
                         hour: "2-digit",
                         minute: "2-digit",
                       })}{" "}
-                      {lc.duration && <> • {lc.duration} min</>}
+                      {getDuration(lc) && <> • {getDuration(lc)} min</>}
                     </span>
                   </div>
                 </div>
@@ -124,7 +134,7 @@ const LiveClasses = () => {
                   lc.live_url ? (
                     <button
                       className={`join-button ${lc.status === "live" ? "live" : "scheduled"}`}
-                      onClick={() => openLiveClass(lc.live_url)}
+                      onClick={() => openLiveClass(lc.id)}
                     >
                       {lc.status === "live" ? "Join Class" : "Enter Class"}{" "}
                       <FiVideo size={16} />
@@ -134,9 +144,9 @@ const LiveClasses = () => {
                       Not Started
                     </button>
                   )}
-                  {lc.recordingUrl && (
+                  {(lc.recordingUrl || lc.recording_url) && (
                     <a
-                      href={lc.recordingUrl}
+                      href={lc.recordingUrl || lc.recording_url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="recording-button"
