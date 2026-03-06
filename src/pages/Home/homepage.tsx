@@ -56,9 +56,7 @@ const Home = () => {
       <section className="hero-section">
         <div className="hero-overlay"></div>
         <div className="container hero-content">
-          {/* <div className="hero-badge animate-fade-in">
-            Welcome to the Future of Learning
-          </div> */}
+        
           <div>
             <h1 className="hero-title animate-slide-up">
               Unlock Your Potential with{" "}
