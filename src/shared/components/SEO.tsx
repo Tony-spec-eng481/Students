@@ -20,7 +20,7 @@ interface SEOProps {
 const SEO: React.FC<SEOProps> = ({
   title,
   description = "Official E-learning portal for our school system.",
-  keywords = "elearning, school, education, clubs, library, courses, online learning, student portal, university, university portal, trespics, trespics institute, trespics school, trespics university, tech, technology",
+  keywords = "elearning, school, education, clubs,institute, library, courses, online learning, student portal, university, university portal, trespics, trespics institute, trespics school, trespics university, tech, technology, institutes in Kenya, institute in Kenya",
   author = "Trespics Institute",
   canonical,
   ogTitle,    

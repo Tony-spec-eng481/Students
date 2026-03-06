@@ -14,7 +14,8 @@ import {
   FiLogOut,
   FiMenu,
   FiX,
-  FiUsers,
+  FiArchive,
+  // FiUsers,
 } from "react-icons/fi";
 import { useAuth } from "../../../shared/context/AuthContext";
 import "../styles/Dashboard.css";
@@ -125,14 +126,23 @@ const StudentDashboard = () => {
             <span>Announcements</span>
           </NavLink>
           <NavLink
+            to=""
+            className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
+            onClick={handleNavClick}
+          >
+            <FiArchive size={18} />
+            <span>Library</span>
+          </NavLink>
+
+          {/* <NavLink
             to="/dashboard/clubs"
             className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
             onClick={handleNavClick}
           >
             <FiUsers size={18} />{" "}
-            {/* Or FiGrid, FiHeart, etc. - choose a clubs-appropriate icon */}
+            
             <span>Clubs</span>
-          </NavLink>
+          </NavLink> */}
           <NavLink
             to="/dashboard/support"
             className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}

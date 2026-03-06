@@ -50,9 +50,7 @@ const Navbar = () => {
       <div className="navbar-container">
         {/* Logo */}
         <Link to="/" className="navbar-logo" onClick={closeMenu}>
-          <span className="logo-text">
-            Trespics Institute
-          </span>
+          <span className="logo-text">Trespics Institute</span>
         </Link>
 
         {/* Hamburger */}
@@ -81,12 +79,17 @@ const Navbar = () => {
             <Link to="/contact" className="nav-link" onClick={closeMenu}>
               Contact
             </Link>
+            <Link
+              to="https://library.trespicsinstitute.dev/"
+              className="nav-link"
+              onClick={closeMenu}
+            >
+              Library
+            </Link>
             {/* <Link to="/clubs" className="nav-link" onClick={closeMenu}>
               Clubs
             </Link>
-            <Link to="/library" className="nav-link" onClick={closeMenu}>
-              Library
-            </Link> */}
+           */}
 
             <div className="nav-divider"></div>
 
