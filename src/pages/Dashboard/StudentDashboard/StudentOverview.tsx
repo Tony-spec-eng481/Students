@@ -136,7 +136,7 @@ const StudentOverview = () => {
           </div>
         </div>
 
-        <div className="stat-card">
+        {/* <div className="stat-card">
           <div className="stat-card-header">
             <div className="stat-card-content">
               <span className="stat-card-label">Certificates</span>
@@ -148,7 +148,7 @@ const StudentOverview = () => {
               <FiAward size={20} />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Dashboard Grid */}

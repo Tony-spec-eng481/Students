@@ -151,14 +151,14 @@ const StudentDashboard = () => {
             <FiMessageSquare size={18} />
             <span>Support</span>
           </NavLink> */}
-          <NavLink
+          {/* <NavLink
             to="/dashboard/certificates"
             className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
             onClick={handleNavClick}
           >
             <FiAward size={18} />
             <span>Certificates</span>
-          </NavLink>
+          </NavLink> */}
         </nav>
 
         <div className="sidebar-footer">
