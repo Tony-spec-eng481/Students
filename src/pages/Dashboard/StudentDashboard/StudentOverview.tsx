@@ -17,16 +17,19 @@ const StudentOverview = () => {
   const { user } = useAuth();
   const [stats, setStats] = useState<any>(null);
   const [deadlines, setDeadlines] = useState<any[]>([]);
+  const [notifications, setNotifications] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const [statsRes, assignmentsRes] = await Promise.all([
+        const [statsRes, assignmentsRes, notificationsRes] = await Promise.all([
           studentApi.getStats(),
-          studentApi.getAssignments()
+          studentApi.getAssignments(),
+          studentApi.getNotifications()
         ]);
         setStats(statsRes.data);
+        setNotifications(notificationsRes.data || []);
         
         // Filter for upcoming deadlines (due date in future and not submitted)
         const upcoming = assignmentsRes.data
@@ -187,6 +190,23 @@ const StudentOverview = () => {
           ) : (
             <div className="empty-state-mini">
               <p>No upcoming deadlines!</p>
+            </div>
+          )}
+        </div>
+        <div className="dashboard-card">
+          <h3 className="card-title">Notifications</h3>
+          {notifications.length > 0 ? (
+            <div className="notifications-list">
+              {notifications.slice(0, 5).map((n: any) => (
+                <div key={n.id} className={`notification-item ${n.is_read ? 'read' : 'unread'}`}>
+                  <p className="notification-message">{n.message}</p>
+                  <span className="notification-time">{new Date(n.created_at).toLocaleDateString()}</span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="empty-state-mini">
+              <p>No new notifications</p>
             </div>
           )}
         </div>

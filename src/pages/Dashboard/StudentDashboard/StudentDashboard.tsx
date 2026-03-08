@@ -126,7 +126,7 @@ const StudentDashboard = () => {
             <span>Announcements</span>
           </NavLink>
           <NavLink
-            to=""
+            to="https://library.trespicsinstitute.dev/"
             className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
             onClick={handleNavClick}
           >
@@ -143,14 +143,14 @@ const StudentDashboard = () => {
             
             <span>Clubs</span>
           </NavLink> */}
-          <NavLink
+          {/* <NavLink
             to="/dashboard/support"
             className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
             onClick={handleNavClick}
           >
             <FiMessageSquare size={18} />
             <span>Support</span>
-          </NavLink>
+          </NavLink> */}
           <NavLink
             to="/dashboard/certificates"
             className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}

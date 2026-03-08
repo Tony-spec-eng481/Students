@@ -18,4 +18,12 @@ export const studentApi = {
     api.post('/student/tickets', data),
   getAvailableCourses: () => api.get('/student/available-courses'),
   enrollInCourse: (courseId: string) => api.post('/student/enroll', { courseId }),
+  
+  // Live Class Attendance
+  recordLiveClassJoin: (liveClassId: string) => api.post('/student/live-classes/join', { liveClassId }),
+  recordLiveClassLeave: (liveClassId: string) => api.post('/student/live-classes/leave', { liveClassId }),
+
+  // Notifications
+  getNotifications: () => api.get('/student/notifications'),
+  markNotificationRead: (id: string) => api.patch(`/student/notifications/${id}/read`),
 };

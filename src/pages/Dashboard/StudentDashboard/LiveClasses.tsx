@@ -49,9 +49,20 @@ const LiveClasses = () => {
 
   const getStartTime = (lc: any) => lc.startTime || lc.start_time;
 
-  const openLiveClass = (classId: string) => {
-    window.open(`/live-classes/room/${classId}`, "_blank",
-      "noopener,noreferrer");
+  const openLiveClass = async (classId: string) => {
+    try {
+      await studentApi.recordLiveClassJoin(classId);
+      window.open(`/live-classes/room/${classId}`, "_blank",
+        "noopener,noreferrer");
+      
+      // We can't easily detect window close of the popup, 
+      // but we can record leave if the student navigates away or closes this tab.
+      window.addEventListener('beforeunload', () => {
+        studentApi.recordLiveClassLeave(classId);
+      });
+    } catch (err) {
+      console.error("Error recording attendance:", err);
+    }
   };
 
   return (
